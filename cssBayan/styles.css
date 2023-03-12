@@ -1,6 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
 }
+
+h1 {
+    font-size: 2.8rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+body {
+    background-color: #a5a68d;
+}
+
+.page {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 0.8rem;
+}
+
+.accordion {
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.item {
+    width: 100%;
+    border-top: 0.16rem solid black;
+}
+
+.item:last-child {
+    border-bottom: 0.16rem solid black;
+}
+
+.item:hover {
+    background-color: blueviolet;
+}
+
+.item__content {
+    width: 100%;
+    cursor: pointer;
+}
+
+.item__header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.item__input {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 0;
+    height: 0;
+}
+
+.item__input:checked ~ .item__content .item__image {
+    display: flex;
+}
+
+.item__image {
+    width: 100%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 3rem;
+}
+
+.item__image img {
+    max-width: 80%;
+    display: block;
+}
+
+.icon {
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    background-image: url("./assets/arrow.svg");
+    background-position: center 60%;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.item__input:checked ~ .item__content .item__header .icon {
+    transform: rotate(180deg);
+    background-position: center 80%;
+}
+
+/**/
+
+@media all and (max-width: 850px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 1.6rem;
+    }   
+
+    .accordion {
+        width: 90vw;
+    }
+}
+
+@media all and (max-width: 640px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+    }  
+
+    .accordion {
+        width: 100%;
+    }
+}
+
+// feat: add html structure (Sun, Mar 12, 2023 22:33:50 PM)
