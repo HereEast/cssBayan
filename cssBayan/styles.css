@@ -18,12 +18,6 @@ h1 {
 h2 {
     font-size: 2rem;
     font-weight: 500;
-
-    transition: color 0.2s ease-in;
-}
-
-label {
-    display: block;
 }
 
 body {
@@ -51,7 +45,7 @@ body {
     width: 100%;
     border: 0.16rem solid white;
     background-color: #121212;
-    margin-top: -0.1rem;
+    margin-top: -0.15rem;
 }
 
 .item:first-child {
@@ -63,14 +57,12 @@ body {
 }
 
 .item__content {
-    display: block;
     width: 100%;
-    height: 4.4rem;
+    display: block;
     overflow: hidden;
-    padding: 0 1.5rem 1.5rem;
+    padding: 1.5rem 1.5rem 0;
+    
     cursor: pointer;
-
-    transition: height 1s ease-in;
 }
 
 .item__header {
@@ -78,7 +70,6 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-bottom: 1.5rem;
 }
 
 .item__input {
@@ -86,25 +77,25 @@ body {
     appearance: none;
     width: 0;
     height: 0;
+    display: none;
 }
 
 .item__image {
     width: 100%;
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 1.5rem;
+    max-height: 0;
+    transform: scaleY(0);
 
-    transform: scale(0);
-    transition: transform 1s ease-in;
+    transition: transform 1s ease-in, max-height 1s ease-in;
 }
 
 .item__image img {
-    /* width: 45%; */
-    height: 100%;
-    object-fit: cover;
-    display: block;
-
-    transition: transform 0.2s ease-in;
+    max-width: 100%;
+    padding-bottom: 0%;
 }
 
 .icon {
@@ -112,12 +103,12 @@ body {
     width: 2rem;
     height: 2rem;
     background-image: url("./assets/arrow.svg");
-    background-position: center 60%;
+    background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
     opacity: 0;
 
-    transition: opacity 0.1s ease-in, transform 1s ease-in, background-image 0.2s ease-in;
+    transition: opacity 0.1s ease-in, transform 1s ease-in;
 }
 
 .accordion:hover .icon {
@@ -125,33 +116,32 @@ body {
 }
 
 /* CHECKED + HOVER */
+.item__input:checked ~ .item__content,
+.item:hover .item__content {
+    margin-bottom: 1.5rem;
+}
+
 .item__input:checked ~ .item__content .item__header .icon,
 .item:hover .item__content .item__header .icon {
     transform: rotate(180deg);
-    background-position: center 80%;
-}
-
-.item__input:checked ~ .item__content,
-.item:hover .item__content {
-    height: 60vh;
-    /* overflow: visible; */
+    background-position: center;
 }
 
 .item__input:checked ~ .item__content .item__image,
 .item:hover .item__content .item__image {
-    display: flex;
-    transform: scale(1);
+    max-height: 100vh;
+    transform: scaleY(1);
 }
 
-/* ACTIVE */
-.item__content:active .item__header h2 {
+.item__input:checked ~ .item__content .item__header h2 {
     color: #D5FF00;
 }
 
-.item__content:active .item__header .icon {
+.item__input:checked ~ .item__content .item__header .icon {
     background-image: url("./assets/arrow--active.svg");
 }
 
+/* ACTIVE */
 .item__content:active .item__image img {
     transform: scale(0.98);
 }
@@ -172,25 +162,8 @@ body {
         font-size: 1.6rem;
     }   
 
-    .accordion {
-        width: 90vw;
-    }
-
-    .item__content {
-        height: 4rem;
-    }
-
-    .item__image img {
-        width: 100%;
-    }
-
     .icon {
         opacity: 1;
-    }
-
-    .item__input:checked ~ .item__content,
-    .item:hover .item__content {
-        height: 70vh;
     }
 }
 
@@ -206,26 +179,6 @@ body {
     .accordion {
         width: 100%;
     }
-
-    .item__content {
-        height: 3.5rem;
-        padding: 0 1.2rem;
-    }
-
-    .item__input:checked ~ .item__content,
-    .item:hover .item__content {
-        height: 60vh;
-    }
-}
-
-@media all and (max-width: 380px) {
-    .page {
-        padding: 3rem 0.8rem;
-    }
-
-    .item__image img {
-        max-width: 100%;
-    }
 }
 
 @media all and (max-width: 320px) {
@@ -236,17 +189,4 @@ body {
     h2 {
         font-size: 1.2rem;
     }  
-
-    .item__content {
-        height: 3.5rem;
-    }
-
-    .item__image img {
-        max-width: 100%;
-    }
-
-    .item__input:checked ~ .item__content,
-    .item:hover .item__content {
-        height: 60vh;
-    }
 }
